@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+<link rel="stylesheet" href="/home/cedcoss/git /events_phalcon/src/app/views/index/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-5">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="order">Checkout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/setting">Setting</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">checkout</a>
+          <a class="dropdown-item" href="#"></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="addpro">Add Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="role">Add Role</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="role/action">Action</a>
+      </li>
+    </ul>
+   </div>
+</nav>
+<section class="section-products">
+		<div class="container">
+				<div class="row justify-content-center text-center">
+						<div class="col-md-8 col-lg-6">
+								<div class="header mt-5">
+										<h3>Featured Product</h3>
+										<h2>Popular Products</h2>
+								</div>
+                <nav class="navbar navbar-light bg-light">
+                  <form class="form-inline" method="POST" action="">
+                    <span>
+                  <div class="row">
+    <!-- <div class=""> -->
+                    <input class="form-control mr-sm-2 col-sm" name="val" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 col-sm m-5" name="submit" type="submit">Search</button>
+</div>
+                    <span>
+
+                  </form>
+                </nav>
+						</div>
+				</div>
+				<div class="row">
+        <?php 
+        if($book){   
+          foreach($book as $val){ ?>
+
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3 m-3 justify">
+								<div id="product-1" class="single-product">
+                                    <div class="card mt-5 " style="width: 18rem;">
+                                        <img class="card-img-top" style="height:155px;" src="https://covers.openlibrary.org/b/olid/<?php echo $val['edition_key'][0]; ?>-M.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <p class="card-text"> Title . <?php echo $val['title']; ?>.</p>
+                                            <p class="card-text">Edition Count -<?php echo $val['edition_count'] ; ?>.</p>
+                                            <?php ?>
+                                            <p class="card-text">Publish Year :-<?php 
+                                              echo $val['publish_year'][0];
+                                              ?>.</p>
+                                              <p class="card-text">Publish Year :-<?php 
+                                              // print_r($val->id_amazon);
+                                              ?>.</p>
+                                            <form method="POST" action="index/detail">
+                                              <input type="hidden" name="title" value="<?php echo $val['isbn'][0]; ?>"/>
+                                            <input type="submit" name="sub" value="Go To Detail"/>
+
+        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        
+        <?php }} ?>
+
+                </div>
+				
+</section>
+<!-- partial -->
+  
+</body>
+</html>
